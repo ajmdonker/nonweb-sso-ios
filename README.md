@@ -48,6 +48,12 @@ NOTE: Don't forget to replace the `@"your consumer id"` with the acquired Consum
 
 You should also implement a few delegate callback methods.
 
+add the `SSOAuthorizationViewControllerDelegate` to your class, f.e.:
+
+    @interface ViewController () <SSOAuthorizationViewControllerDelegate>
+    
+Implement the delegate callbacks:
+
     #pragma mark - SSOAuthorizationViewControllerDelegate
 
     - (void)dismissAuthorizationViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion {
