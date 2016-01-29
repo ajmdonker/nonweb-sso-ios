@@ -22,10 +22,24 @@ alternatively, add the code from the SSOService folder into your project directl
 ### 2. Register URL scheme
 
 In the Info.plist of your app, add an entry in CFBundleURLTypes with the value for CFBundleURLSchemes set to the one registered with Surfnet.
+This should look something similar like this:
+
+    <key>CFBundleURLTypes</key>
+    <array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sfoauth</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>sf<YourRedirectUriHere></string>
+		</dict>
+    </array>
 
 ### 3. Showing authorization screen
 
 When you want to let the user login, create an authorization view controller and display it.
+NOTE: Don't forget to replace the `@"your consumer id"` with the acquired Consumer ID from SURFnet.
 
     - (IBAction)authorize:(id)sender {
         UIViewController *authorizationViewController = [SSOService authorizationViewControllerForEndpoint:@"https://nonweb.demo.surfconext.nl/php-oauth-as/authorize.php" consumerId:@"your consumer id" state:@"demo" delegate:self];
